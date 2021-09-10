@@ -103,3 +103,72 @@ $sum = function ($a, $b) {
 
 echo $sum(100, 200);
 ```
+
+## 関数の型付け
+```
+function showInfo($name, $score) {
+	echo $name . ' : ' . $score . PHP_EOL;
+}
+// 呼出
+shwoInfo('Taro', 40); // Taro : 40
+shwoInfo('Taro', 'English'); // Taro : English <- 意図しない型の値入れてもそのまま出力される
+```
+```
+function showInfo(String $name, int $score) { // <- 引数の前に型を記入
+	echo $name . ' : ' . $score . PHP_EOL;
+}
+// 呼出
+shwoInfo('Taro', 'English'); // Error
+shwoInfo('Taro', '40'); // Taro : 40 <- 勝手に変換
+```
+```declare(strict_type=1);```を文頭につけることで強い型付けになる
+```
+declare(strict_type=1);
+function showInfo(String $name, int $score) {
+	echo $name . ' : ' . $score . PHP_EOL;
+}
+// 呼出
+shwoInfo('Taro', 'English'); // Error
+shwoInfo('Taro', '40'); // Error
+```
+
+## 配列
+値とキーがセットになったもの
+```
+$nums = [ 12, 66, 3 ];
+echo $nums[2] . PHP_EOL; // 出力結果：3
+```
+インデックスをキーにしても使える
+```
+$nums = [
+	'first'  => 12,
+	'second' => 66,
+	'third'  => 3
+];
+echo $nums['second'] . PHP_EOL; // 出力結果：66
+```
+### foreach文
+```
+$nums = [ 12, 66, 3 ];
+foreach ($nums as &num) { // $numsから1個ずつ値を取り出して$numに入れて使う
+	echo &num . PHP_EOL;
+}
+/*
+結果
+12
+66
+3
+*/
+```
+keyを使った場合
+```
+foreach ($nums as $key => $num) {
+	echo $key . ' : ' . $num . PHP_EOL;
+}
+/*
+結果
+first : 12
+second : 66
+third : 3
+*/
+```
