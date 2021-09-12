@@ -9,4 +9,7 @@
 3. Ubuntuをインストール
 4. VScodeで確認
 
+## 1. Docker Desktopをインストール
+Products > Docker Desktopを選択
+https://github.com/yoshiaki725/GakushuLoadMap/issues/1#issue-994054823
 
