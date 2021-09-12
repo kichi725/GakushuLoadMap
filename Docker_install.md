@@ -11,5 +11,10 @@
 
 ## 1. Docker Desktopをインストール
 Products > Docker Desktopを選択
-https://github.com/yoshiaki725/GakushuLoadMap/issues/1#issue-994054823
+![画像1](https://user-images.githubusercontent.com/72304840/132973061-c475045e-74ba-4143-af7d-a835dbc0778d.jpg)
+
+Download for Windowsボタンをクリック
+
+インストーラのダウンロードが開始されるので、ダウンロードが終了したらクリックして起動する。
+
 
