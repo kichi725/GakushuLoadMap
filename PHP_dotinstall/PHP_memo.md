@@ -172,3 +172,94 @@ second : 66
 third : 3
 */
 ```
+### 配列に追加
+```
+$addNum = [ 43, 88, 'Hello', [99, 88, 77] ];
+$nums = [ 1, 5, $addNum, 3 ];
+
+print_r($nums);
+/* 結果 ↓配列の中に配列が入る
+Array
+(
+    [0] => 1
+    [1] => 5
+    [2] => Array
+        (
+            [0] => 43
+            [1] => 88
+        )
+    [3] => 3
+)
+```
+```
+$addNum1 = [ 43, 88, 'Hello', [99, 88, 77] ]; // 整数も文字列も配列も入れることができる
+$addNum2 = [666, 555];
+$nums = [ 1, 5, $addNum1, ...$addNum2, 3 ];
+
+print_r($nums);
+
+// 結果
+Array
+(
+    [0] => 1
+    [1] => 5
+    [2] => Array // 配列が追加される
+        (
+            [0] => 43
+            [1] => 88
+            [2] => Hello
+            [3] => Array
+                (
+                    [0] => 99
+                    [1] => 88
+                    [2] => 77
+                )
+        )
+    [3] => 666 // 配列の要素が追加される
+    [4] => 555
+    [5] => 3
+)
+```
+### 可変長引数
+```
+function sum(...$nums) // ...をつけることで引数の数がかわっても受け付ける
+{
+	$total = 0;
+	foreach ($nums as $num) {
+		$total += $num;
+	}
+	return $total;
+}
+
+echo sum(1, 2) . PHP_EOL;	// 3
+echo sum(1, 2, 3) . PHP_EOL;	// 6
+echo sum(1, 2, 3, 4) . PHP_EOL;	// 10
+```
+### 複数の返り値を返す
+```
+function getStates(...$numbers)
+{
+  $total = 0;
+  foreach ($numbers as $number) {
+    $total += $number;
+  }
+  return [$total, $total / count($numbers)]; // 合計, 平均
+}
+
+print_r(getStates(1, 2, 3));
+// 結果
+Array
+(
+    [0] => 6 // 合計
+    [1] => 2 // 平均
+)
+```
+返した値を変数に入れることができる
+```
+// どちらでも入れることができる
+list($sum, $ave) = getStates(1, 2, 3);
+[$sum, $ave] = getStates(1, 2, 3);
+
+echo $sum . PHP_EOL; // 6
+echo $ave . PHP_EOL; // 2
+```
