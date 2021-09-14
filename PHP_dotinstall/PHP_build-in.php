@@ -36,3 +36,40 @@ echo $input . PHP_EOL;
 3
 dot-taro
 */
+
+// 日本語の場合
+$input = ' こんにちは  ';
+$input = trim($input);
+
+// マルチバイトに対応した関数を使用
+echo mb_strlen($input) . PHP_EOL;
+echo mb_strpos($input, 'に') . PHP_EOL;
+
+// str_replaceは文字コードがUTF-8なら日本語も扱える
+$input = str_replace('にち', 'ばん', $input);
+echo $input . PHP_EOL;
+
+/* 結果
+5
+2
+こんばんは
+*/
+
+//========================================================
+$input = '20200320Item-A  1200';
+$input = substr_replace($input, 'Item-B  ', 8, 8); // 文字列置換
+
+$date = substr($input, 0, 8);
+$product = substr($input, 8, 8);
+$amount = substr($input, 16); // 最後までの場合桁数を省略可
+
+echo $date . PHP_EOL;
+echo $product . PHP_EOL;
+// echo $amount . PHP_EOL;
+echo number_format($amount) . PHP_EOL; // 3桁数ごとに区切る
+
+/* 結果
+20200320
+Item-B  
+1,200
+*/
