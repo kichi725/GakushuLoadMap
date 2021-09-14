@@ -29,6 +29,3 @@ PHPでウェブサービスを作れるようになろう
 データベース
 1. MySQL入門 基礎編 (全27回)
 2. MySQL入門 応用編 (全37回) 
-
-# dockerインストール
-https://yoshimablog.net/docker-install/
