@@ -1,6 +1,6 @@
 <?php
 
-// 
+//========================================================
 $name = 'Apple';
 $score = 32.246;
 
@@ -19,4 +19,20 @@ echo $info . PHP_EOL;
 [Apple][32.246]
 [          Apple][     32.25]
 [Apple          ][0000032.25]
+*/
+
+//========================================================
+$input = '  dot_taro   ';
+$input = trim($input); // 空白を除去して再代入
+
+echo strlen($input) . PHP_EOL;        // 長さを調べる
+echo strpos($input, '_') . PHP_EOL;   // 文字列検索
+
+$input = str_replace('_', '-', $input); // 文字列検索
+echo $input . PHP_EOL;
+
+/* 結果
+8
+3
+dot-taro
 */
