@@ -151,3 +151,12 @@ array_shift($scores);
 array_pop($scores);
 
 print_r($scores);
+
+//========================================================
+// 配列の要素を切り出す
+$scores = [30, 40, 50, 60, 70];
+$partial = array_slice($scores, 2, 3);
+$partial = array_slice($scores, -2); // 末尾から-2
+
+print_r($scores); // 元配列は変更しない
+print_r($partial);
