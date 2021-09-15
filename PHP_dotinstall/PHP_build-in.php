@@ -73,3 +73,81 @@ echo number_format($amount) . PHP_EOL; // 3桁数ごとに区切る
 Item-B  
 1,200
 */
+
+//========================================================
+$input = 'Call us at 03-3001-1256 or 03-3015-3222';
+// 正規表現
+$pattern = '/\d{2}-\d{4}-\d{4}/';
+// 特定のパターンで文字列検索、置換
+preg_match($pattern, $input, $matches); // はじめに見つけた1つ
+preg_match_all($pattern, $input, $matches); // マッチしたものすべて
+print_r($matches);
+
+// パターンに応じて置換
+$input = preg_replace($pattern, '**-****-****', $input);
+echo $input . PHP_EOL;
+
+/* 結果
+Array
+(
+    [0] => Array
+        (
+            [0] => 03-3001-1256
+            [1] => 03-3015-3222
+        )
+
+)
+Call us at **-****-**** or **-****-****
+*/
+
+//========================================================
+// 文字列と配列を相互に変換
+$d = [2020, 11, 15];
+echo "$d[0]-$d[1]-$d[2]" . PHP_EOL;
+// 区切り文字で配列の要素を連結
+echo implode('-', $d) . PHP_EOL;
+
+// 文字列を区切り文字で分けて配列へ
+$t = '17:32:45';
+print_r(explode(':', $t));
+
+//========================================================
+
+// 数学関連の関数
+$n = 5.6283;
+
+// 小数点以下を切り上げ
+echo ceil($n) . PHP_EOL;
+// 切り捨て
+echo floor($n) . PHP_EOL;
+// 小数点以下を四捨五入して整数
+echo round($n) . PHP_EOL;
+// 小数点以下を2桁に
+echo round($n, 2) . PHP_EOL;
+
+// 乱数生成
+echo mt_rand(1, 6) . PHP_EOL; // 1以上6以下
+
+// 最大最小
+echo max(4, 9, 6) . PHP_EOL;
+echo min(4, 9, 6) . PHP_EOL;
+
+// 定数
+echo M_PI . PHP_EOL; // 円周率
+echo M_SQRT2 . PHP_EOL; // 2の平方根
+
+//========================================================
+
+$scores = [30, 40, 50];
+
+// 先頭に追加
+array_unshift($scores, 10, 20);
+// 末尾に追加
+array_push($scores, 60, 70);
+$scores[] = 80;
+
+// 先頭を削除（）
+array_shift($scores);
+array_pop($scores);
+
+print_r($scores);
