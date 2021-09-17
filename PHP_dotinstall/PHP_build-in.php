@@ -160,3 +160,32 @@ $partial = array_slice($scores, -2); // 末尾から-2
 
 print_r($scores); // 元配列は変更しない
 print_r($partial);
+
+//========================================================
+// array_splice()で要素を削除、置換
+$scores = [30, 40, 50, 60, 70, 80];
+
+// 元配列を直接変更
+// array_splice($scores, 2, 3);
+// 削除した位置に要素を挿入
+array_splice($scores, 2, 3, 100);
+// 削除せず、間に複数の要素を挿入
+array_splice($scores, 2, 0, [100, 101]);
+
+print_r($scores);
+
+
+//========================================================
+// ソート、シャッフル
+$scores = [40, 50, 20, 30];
+// 並び替え
+sort($scores);
+rsort($scores);
+print_r($scores);
+// 元配列を直接変更
+shuffle($scores);
+print_r($scores);
+// ランダムで要素を取り出し、新しい配列でキーを返す
+$picked = array_rand($scores, 2);
+echo $scores[$picked[0]] . PHP_EOL;
+echo $scores[$picked[1]] . PHP_EOL;
